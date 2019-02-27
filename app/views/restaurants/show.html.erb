@@ -1,0 +1,26 @@
+<h1><%= @restaurant.name.capitalize %></h1>
+<br>
+<div class="show-box">
+  <div class="info-box">
+    <h2>Category:</h2>
+    <p><%= @restaurant.category.capitalize %></p>
+    <br>
+    <h2>Address:</h2>
+    <p><%= @restaurant.address %></p>
+    <br>
+    <h2>Phone Number</h2>
+    <p><%= @restaurant.phone_number %></p>
+    <br>
+  </div>
+  <div class="review-box">
+    <% @review.each do |review| %>
+      <h2>Review:</h2>
+      <p><%= review.content %></p>
+      <br>
+      <h2>Rating:</h2>
+      <p><%= review.rating %></p>
+    <% end %>
+  </div>
+</div>
+<br>
+<%= link_to 'Add Review', new_restaurant_review_path(params[:id]), class: "btn btn-primary" %>
