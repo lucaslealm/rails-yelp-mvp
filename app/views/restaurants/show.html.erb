@@ -13,14 +13,22 @@
     <br>
   </div>
   <div class="review-box">
-    <% @review.each do |review| %>
+    <% @restaurant.reviews.each do |review| %>
       <h2>Review:</h2>
       <p><%= review.content %></p>
-      <br>
       <h2>Rating:</h2>
       <p><%= review.rating %></p>
+      <br>
+      <br>
     <% end %>
   </div>
 </div>
 <br>
-<%= link_to 'Add Review', new_restaurant_review_path(params[:id]), class: "btn btn-primary" %>
+<h2>Add New Review</h2>
+
+<%= simple_form_for [@restaurant, @review] do |f| %>
+  <%= f.input :content %>
+  <%= f.input :rating %>
+  <%= f.submit "add a review", class: 'btn btn-primary' %>
+<% end %>
+
